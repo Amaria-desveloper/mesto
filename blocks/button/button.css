@@ -7,17 +7,5 @@
   border-color: #fff;
   background-color: transparent;
   box-sizing: border-box;
-}
-
-.button_size_small {
-  width: 24px;
-  height: 24px;
-  border-width: 1px;
-}
-
-.button_size_big {
-  width: 150px;
-  height: 50px;
-  border-width: 2px;
-  border-radius: 2px;
+  cursor: pointer;
 }

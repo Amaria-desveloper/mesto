@@ -5,6 +5,10 @@
 @import url(../blocks/root/__container/root__container.css);
 
 @import url(../blocks/button/button.css);
+@import url(../blocks/button/_edit/button_edit.css);
+@import url(../blocks/button/_add/button_add.css);
+@import url(../blocks/button/_heart/button_heart.css);
+@import url(../blocks/button/_heart/button_heart_active.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
