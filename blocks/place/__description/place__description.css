@@ -1,0 +1,5 @@
+.place__description {
+  display: flex;
+  align-items: baseline;
+  padding: 28px 20px 26px 21px;
+}

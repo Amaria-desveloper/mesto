@@ -1,0 +1,9 @@
+/* Place */
+
+.place {
+  display: block;
+  width: 282px;
+  height: 361px;
+  border-radius: 10px;
+  background-color: #fff;
+}
