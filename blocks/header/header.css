@@ -1,6 +1,7 @@
 /* Header */
 
 .header {
+  grid-area: header;
   min-height: 73px;
   border-bottom: 1px solid #545454;
 }

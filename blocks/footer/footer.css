@@ -1,6 +1,7 @@
 /* Footer */
 
 .footer {
+  grid-area: footer;
   padding: 10px 0 0;
 }
 

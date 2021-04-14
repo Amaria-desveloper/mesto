@@ -1,6 +1,7 @@
 /* Main */
 
 .main {
+  grid-area: main;
   padding: 0;
 }
 

@@ -1,7 +1,9 @@
 .root__container {
-  max-width: 880px;
+  max-width: 1280px;
+  min-height: 100vh;
   margin: 0 auto;
   padding: 45px 0 60px;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 1024px) {
