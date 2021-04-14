@@ -1,0 +1,14 @@
+/* Grid */
+
+.grid {
+  display: grid;
+  align-items: start;
+  justify-content: stretch;
+  grid-template-columns: 1fr minmax(280px, 880px) 1fr;
+  grid-template-rows: min-content 1fr min-content;
+  grid-row-gap: 40px;
+  grid-template-areas:
+    ". header ."
+    ". main ."
+    ". footer .";
+}

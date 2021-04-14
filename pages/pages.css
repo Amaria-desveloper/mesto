@@ -4,6 +4,8 @@
 @import url(../blocks/root/root.css);
 @import url(../blocks/root/__container/root__container.css);
 
+@import url(../blocks/grid/grid.css);
+
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_edit/button_edit.css);
 @import url(../blocks/button/_add/button_add.css);
