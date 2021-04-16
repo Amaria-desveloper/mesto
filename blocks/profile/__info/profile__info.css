@@ -10,7 +10,7 @@
     grid-template-columns: minmax(min-content, 218px) min-content;
     grid-column-gap: 10px;
     grid-row-gap: 8px;
-    justify-items: end;
+    text-align: end;
     max-width: 100%;
     margin: 30px 0 32px 0;
   }
