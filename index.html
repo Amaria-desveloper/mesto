@@ -79,5 +79,28 @@
       </p>
     </footer>
   </div>
+
+  <section class="popup">
+    <div class="popup__container">
+
+      <form class="popup__form" name="editProfile" action="#" method="post">
+        <fieldset class="popup__fieldset">
+          <legend class="popup__legend">
+            <h3 class="popup__title">Редактировать профиль</h3>
+          </legend>
+
+          <label class="popup__field">
+            <input class="popup__input" type="text" name="profileName" value="Жак-Ив Кусто">
+          </label>
+          <label class="popup__field">
+            <input class="popup__input" type="text" name="profileDescription" value="Исследователь">
+          </label>
+        </fieldset>
+        <button class="popup__submit button button_save">Сохранить</button>
+      </form>
+
+      <button class="popup__close-button button button_close"></button>
+    </div>
+  </section>
 </body>
 </html>
