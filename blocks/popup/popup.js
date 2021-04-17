@@ -1,8 +1,11 @@
 `use strict`;
 
 let editButton = document.querySelector(`.profile__edit-button`);
-let editPopup = document.querySelector(`.popup`);
-let formEditProfile = editPopup.querySelector(`.popup__form[name="editProfile"]`);
+let popup = document.querySelector(`.popup`);
+let formEditProfile = popup.querySelector(`.popup__form[name="editProfile"]`);
+let saveButton = popup.querySelector(`.popup__submit`);
+let inputProfileName = formEditProfile.querySelector(`.popup__input[name="profileName"]`);
+let inputProfileDesc = formEditProfile.querySelector(`.popup__input[name="profileDescription"]`);
 
 
 /**
@@ -11,12 +14,13 @@ let formEditProfile = editPopup.querySelector(`.popup__form[name="editProfile"]`
  * @param {external: Element} popup html-элемент (попап)
  * @returns void
  */
-function openPopup(popup) {
+function openPopup() {
   popup.classList.add(`popup_opened`);
   popup.querySelector(`.popup__input`).focus();
 
   let closeButton = popup.querySelector(`.popup__close-button`);
 
+  formEditProfile.addEventListener(`submit`, formEditProfileSubmitHandler);
   closeButton.addEventListener(`click`, popupCloseClickHandler);
   document.addEventListener(`keydown`, popupEscHandler);
 }
@@ -28,19 +32,20 @@ function openPopup(popup) {
  * @param {external: Element} popup html-элемент (попап)
  * @returns void
  */
-function closePopup(popup) {
+function closePopup() {
   popup.classList.remove(`popup_opened`);
 }
 
 
 /**
- * Ловит событие click На кнопке редактирования профиля
+ * Ловит событие click на кнопке редактирования профиля
  * @param {event} evt
  * @returns void
  */
 function editButtonClickHandler(evt) {
   evt.preventDefault();
-  openPopup(editPopup);
+
+  openPopup(popup);
 }
 
 
@@ -51,7 +56,8 @@ function editButtonClickHandler(evt) {
  */
 function popupCloseClickHandler(evt) {
   evt.preventDefault();
-  closePopup(editPopup);
+
+  closePopup(popup);
 }
 
 
@@ -63,10 +69,67 @@ function popupCloseClickHandler(evt) {
 function popupEscHandler(evt) {
   if (evt.key === `Escape`) {
     evt.preventDefault();
-    document.removeEventListener(`keydown`, popupEscHandler);
 
-    closePopup(editPopup);
+    document.removeEventListener(`keydown`, popupEscHandler);
+    closePopup(popup);
   }
+}
+
+
+/**
+ * Ловит событие click на кнопке Сохранить (submit)
+ * @param {event} evt
+ * @returns void
+ */
+function saveButtonClickHandler(evt) {
+  evt.preventDefault();
+
+  closePopup(popup);
+}
+
+
+/**
+ * Ловит нажатие клавиши Enter при открытой форме редактирования профиля
+ * @param {event} evt
+ * @returns void
+ */
+function popupEnterHandler(evt) {
+  if (evt.key === `Enter`) {
+    evt.preventDefault();
+
+    popup.removeEventListener(`keydown`, popupEnterHandler);
+    closePopup(popup);
+  }
+}
+
+
+/**
+ * Меняет значения полей профиля на значения, полученные из формы редактирования
+ * @returns void
+ */
+function changeProfile() {
+  let name = inputProfileName.value;
+  let description = inputProfileDesc.value;
+
+  let profileName = document.querySelector(`.profile__name`);
+  let profileDescription = document.querySelector(`.profile__description`);
+
+  profileName.textContent = name;
+  profileDescription.textContent = description;
+}
+
+
+/**
+ * Ловит событие Submit на форме редактирования профиля
+ * @param {event} evt
+ * @returns void
+ */
+function formEditProfileSubmitHandler(evt) {
+  evt.preventDefault();
+
+  changeProfile()
+  closePopup(popup);
+  popup.addEventListener(`keydown`, popupEnterHandler);
 }
 
 
