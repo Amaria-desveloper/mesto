@@ -1,4 +1,4 @@
-.button_heart {
+.button_type_heart {
   border: none;
   min-width: 22px;
   height: 19px;
@@ -8,12 +8,12 @@
   background-repeat: no-repeat;
 }
 
-.button_heart:hover,
-.button_heart:focus {
+.button_type_heart:hover,
+.button_type_heart:focus {
   filter: opacity(50%);
 }
 
-.button_heart:active {
+.button_type_heart:active {
   background-image: url(../../../images/heart-black.svg);
   filter: opacity(100%);
 }

@@ -14,13 +14,7 @@
   opacity: 0.6;
 }
 
-
-.button_close {
-  width: 40px;
-  height: 40px;
-  border: 0;
-  background-image: url(../../images/close-cross.svg);
-  background-size: 100% 100%;
-  background-position: 0 0;
-  background-repeat: no-repeat;
+.button:focus {
+  opacity: 0.6;
+  outline: none;
 }

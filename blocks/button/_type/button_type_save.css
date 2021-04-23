@@ -1,4 +1,4 @@
-.button_save {
+.button_type_save {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,8 +10,4 @@
   border-color: #000;
   border-radius: 2px;
   background-color: #000;
-}
-
-.popup_save:hover {
-  opacity: 0.8;
 }
