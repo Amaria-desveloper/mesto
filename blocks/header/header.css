@@ -2,13 +2,12 @@
 
 .header {
   grid-area: header;
-  min-height: 73px;
-  border-bottom: 1px solid #545454;
+  padding-bottom: 41px;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 
 @media screen and (max-width: 1024px) {
   .header {
-    min-height: 55px;
-    padding: 0 27px 0;
+    padding: 0 27px 30px;
   }
 }
