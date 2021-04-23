@@ -11,3 +11,11 @@
   border-radius: 2px;
   background-color: #000;
 }
+
+@media screen and (max-width: 768px) {
+  .button_type_save {
+    height: 46px;
+    font-size: 14px;
+  }
+
+}
