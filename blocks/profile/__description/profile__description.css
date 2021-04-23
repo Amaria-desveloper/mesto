@@ -8,7 +8,6 @@
   font-weight: 400;
   color: #fff;
   text-overflow: ellipsis;
-  white-space: wrap;
   overflow: hidden;
 }
 
@@ -16,5 +15,6 @@
   .profile__description {
     max-width: 235px;
     font-size: 14px;
+    line-height: 1.22;
   }
 }
