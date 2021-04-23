@@ -1,15 +1,20 @@
 .profile__description {
   grid-column: 1;
   grid-row: 2;
+  max-width: 305px;
   margin: 0;
   font-size: 18px;
   line-height: 1.22;
   font-weight: 400;
   color: #fff;
+  text-overflow: ellipsis;
+  white-space: wrap;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 768px) {
   .profile__description {
+    max-width: 235px;
     font-size: 14px;
   }
 }
