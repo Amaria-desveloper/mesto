@@ -12,6 +12,11 @@
   background-color: #000;
 }
 
+.button_type_save:hover,
+.button_type_save:focus {
+  opacity: 0.8;
+}
+
 @media screen and (max-width: 768px) {
   .button_type_save {
     height: 46px;
