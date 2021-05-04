@@ -40,10 +40,16 @@
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/_overlay/popup_overlay_grey.css);
+@import url(../blocks/popup/_overlay/popup_overlay_dark.css);
 @import url(../blocks/popup/__container.css/popup__container.css);
+@import url(../blocks/popup/__container.css/_type/popup__container_type_fullpicture.css);
 @import url(../blocks/popup/__fieldset/popup__fieldset.css);
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__field/popup__field.css);
 @import url(../blocks/popup/__input/popup__input.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
+@import url(../blocks/popup/__full-image/popup__full-image.css);
+@import url(../blocks/popup/__figcaption/popup__figcaption.css);
 @import url(../blocks/popup/__close-button/popup__close-button.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

@@ -7,6 +7,7 @@ const addButton = document.querySelector(`.profile__add-button`);
 
 const popupEdit = document.querySelector(`.popup_type_edit`);
 const popupAdd = document.querySelector(`.popup_type_add`);
+const popupFullimage = document.querySelector(`.popup_type_fullimage`);
 
 const formEditProfile = popupEdit.querySelector(`.popup__form[name="editProfile"]`);
 const inputProfileName = formEditProfile.querySelector(`.popup__input[name="profileName"]`);
@@ -159,7 +160,7 @@ renderCards(initialCards);
 /**
  * Создаёт карточку Place с переданными данными
  * @param {array.<object>} data данные для карточки
- * @param {int} index иднекс элемента в массиве данных
+ * @param {int} index индекс элемента в массиве данных
  * @return {HTMLElement} card - возвращает #document-fragment.
  */
 function createCard(data, index) {
@@ -176,7 +177,6 @@ function createCard(data, index) {
   const likeButton = card.querySelector('.place__button');
   likeButton.addEventListener('click', evt => {
     evt.preventDefault();
-
     likeButton.classList.toggle('button_type_heart_active');
   });
 
@@ -185,6 +185,8 @@ function createCard(data, index) {
     evt.preventDefault();
     card.remove();
   });
+
+  image.addEventListener('click', showFullImage.bind(this, title.textContent));
 
   return card;
 }
@@ -206,4 +208,22 @@ function renderCards(data) {
       placesList.prepend(createCard(data, i));
     }
   }
+}
+
+
+/* === манипуляции с карточками ===*/
+/**
+ * Показать попап с изображением с карточки места
+ * @param cardTitle название фото
+ * @param evt событие
+ */
+function showFullImage(cardTitle, evt) {
+  openPopup(popupFullimage);
+
+  const fullImage = popupFullimage.querySelector('.popup__full-image');
+  fullImage.src = evt.target.src;
+  fullImage.alt = `Фотография загруженная пользователем: ${cardTitle}`;
+
+  const figcaption = popupFullimage.querySelector('.popup__figcaption');
+  figcaption.textContent = cardTitle;
 }
