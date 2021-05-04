@@ -173,6 +173,13 @@ function createCard(data, index) {
   image.alt = `Фотография загруженная пользователем: ${data[index].name}`;
   title.textContent = data[index].name;
 
+  const likeButton = card.querySelector('.place__button');
+  likeButton.addEventListener('click', evt => {
+    evt.preventDefault();
+
+    likeButton.classList.toggle('button_type_heart_active');
+  })
+
   return card;
 }
 
