@@ -37,6 +37,7 @@
     </footer>
   </div>
 
+  <!-- попап с формой рдактирования профиля -->
   <div class="popup popup_type_edit">
     <div class="popup__container">
 
@@ -60,6 +61,7 @@
     </div>
   </div>
 
+  <!-- попап с формой добавления новой карточки -->
   <div class="popup popup_type_add">
     <div class="popup__container">
 
@@ -84,10 +86,21 @@
     </div>
   </div>
 
+  <!-- попап для full image -->
+  <div class="popup popup_type_fullimage">
+    <div class="popup__container popup__container_type_fullpicture">
+      <figure class="popup__figure">
+        <img class="popup__full-image" src="#" alt="фотография загруженная пользователем: Название">
+        <figcaption class="popup__figcaption">Название/подпись</figcaption>
+      </figure>
+      <button class="popup__close-button button button_type_close" type="button" aria-label="закрыть окно"></button>
+    </div>
+  </div>
+
   <!-- шаблон карточки -->
   <template id="place-template">
     <li class="place">
-      <img class="place__image" src=""
+      <img class="place__image" src="#"
         alt="фотография загруженная пользователем: название">
       <div class="place__description">
         <h2 class="place__title">Название</h2>
