@@ -1,6 +1,7 @@
 /* Place */
 
 .place {
+  position: relative;
   display: block;
   width: 282px;
   border-radius: 10px;

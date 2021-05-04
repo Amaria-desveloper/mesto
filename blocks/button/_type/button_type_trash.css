@@ -1,0 +1,9 @@
+.button_type_trash {
+  position: absolute;
+  top: 18px;
+  right: 15px;
+  width: 18px;
+  height: 20px;
+  border: none;
+  background-image: url(../../../images/icon-trash.svg);
+}

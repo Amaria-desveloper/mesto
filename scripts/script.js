@@ -178,7 +178,13 @@ function createCard(data, index) {
     evt.preventDefault();
 
     likeButton.classList.toggle('button_type_heart_active');
-  })
+  });
+
+  const deleteButton = card.querySelector('.place__delete');
+  deleteButton.addEventListener('click', evt => {
+    evt.preventDefault();
+    card.remove();
+  });
 
   return card;
 }
