@@ -84,11 +84,7 @@ function formEditProfileSubmitHandler(evt) {
  * @param {*} evt
  */
 function resetAllInputs(form) {
-  let allInputs = form.querySelectorAll(`input`);
-
-  allInputs.forEach(input => {
-    input.value = "";
-  });
+  form.reset();
 }
 
 /**
