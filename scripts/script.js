@@ -158,7 +158,7 @@ function formAddPlaceSubmitHandler(evt) {
 
 /**
  * Создаёт карточку Place с переданными данными
- * @param {array.<object>} data данные для карточки
+ * @param {object} card данные для карточки
  * @param {int} index индекс элемента в массиве данных
  * @return {HTMLElement} card - возвращает #document-fragment.
  */

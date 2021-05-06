@@ -5,6 +5,9 @@
 @import url(../blocks/root/__container/root__container.css);
 
 @import url(../blocks/grid/grid.css);
+@import url(../blocks/grid/__header/grid__header.css);
+@import url(../blocks/grid/__main/grid__main.css);
+@import url(../blocks/grid/__footer/grid__footer.css);
 
 @import url(../blocks/button/button.css);
 @import url(../blocks/button/_type/button_type_edit.css);

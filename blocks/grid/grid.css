@@ -12,15 +12,3 @@
     ". main ."
     ". footer .";
 }
-
-.grid__header {
-  grid-area: header;
-}
-
-.grid__main {
-  grid-area: main;
-}
-
-.grid__footer {
-  grid-area: footer;
-}
