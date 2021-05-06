@@ -162,32 +162,32 @@ function formAddPlaceSubmitHandler(evt) {
  * @param {int} index индекс элемента в массиве данных
  * @return {HTMLElement} card - возвращает #document-fragment.
  */
-function createCard(data, index) {
+function createCard(card) {
   const template = document.querySelector('#place-template').content;
-  const card = template.querySelector('.place').cloneNode(true);
+  const element = template.querySelector('.place').cloneNode(true);
 
-  const image = card.querySelector('.place__image');
-  const title = card.querySelector('.place__title');
+  const image = element.querySelector('.place__image');
+  const title = element.querySelector('.place__title');
 
-  image.src = data[index].link;
-  image.alt = `Фотография загруженная пользователем: ${data[index].name}`;
-  title.textContent = data[index].name;
+  image.src = card.link;
+  image.alt = `Фотография загруженная пользователем: ${card.name}`;
+  title.textContent = card.name;
 
-  const likeButton = card.querySelector('.place__button');
+  const likeButton = element.querySelector('.place__button');
   likeButton.addEventListener('click', evt => {
     evt.preventDefault();
     likeButton.classList.toggle('button_type_heart_active');
   });
 
-  const deleteButton = card.querySelector('.place__delete');
+  const deleteButton = element.querySelector('.place__delete');
   deleteButton.addEventListener('click', evt => {
     evt.preventDefault();
-    card.remove();
+    element.remove();
   });
 
   image.addEventListener('click', showFullImage.bind(this, title.textContent));
 
-  return card;
+  return element;
 }
 
 
@@ -198,12 +198,8 @@ function createCard(data, index) {
  * @return {void}
  */
 function renderCards(data) {
-  const quantity = data.length;
-
   if (placesList) {
-    for (let i = 0; i < quantity; i++) {
-      placesList.prepend(createCard(data, i));
-    }
+    data.forEach((card) => placesList.prepend(createCard(card)));
   }
 }
 
