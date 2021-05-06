@@ -1,21 +1,30 @@
 `use strict`;
+//искомые элементы на странице
 const profileName = document.querySelector(`.profile__name`);
 const profileDescription = document.querySelector(`.profile__description`);
+const placesList = document.querySelector('.places__list');
 
+//кнопки
 const editButton = document.querySelector(`.profile__edit-button`);
 const addButton = document.querySelector(`.profile__add-button`);
 
+//попап с формой редактирования профиля
 const popupEdit = document.querySelector(`.popup_type_edit`);
-const popupAdd = document.querySelector(`.popup_type_add`);
-const popupFullimage = document.querySelector(`.popup_type_fullimage`);
-
 const formEditProfile = popupEdit.querySelector(`.popup__form[name="editProfile"]`);
 const inputProfileName = formEditProfile.querySelector(`.popup__input[name="profileName"]`);
 const inputProfileDesc = formEditProfile.querySelector(`.popup__input[name="profileDescription"]`);
 
+//попап с формой добавлений новой карточки
+const popupAdd = document.querySelector(`.popup_type_add`);
 const formAddPlace = popupAdd.querySelector(`.popup__form[name="addPlace"]`);
 const inputPlaceName = formAddPlace.querySelector(`.popup__input[name="placeName"]`);
 const inputPlaceUrl = formAddPlace.querySelector(`.popup__input[name="placeUrl"]`);
+
+//попап с full-image
+const popupFullimage = document.querySelector(`.popup_type_fullimage`);
+const fullImage = popupFullimage.querySelector('.popup__full-image');
+const figcaption = popupFullimage.querySelector('.popup__figcaption');
+
 
 /**
  * Открывает попап
@@ -87,6 +96,7 @@ function resetAllInputs(form) {
   form.reset();
 }
 
+
 /**
  * Обработчик клика на кнопке добавления новой карточки
  * @param evt
@@ -97,13 +107,14 @@ function addButtonClickHandler(evt) {
   openPopup(popupAdd);
 }
 
+
 /**
  * Обработчик "отправки" формы добавления новой карточки
  * @param evt submit
  */
 function formAddPlaceSubmitHandler(evt) {
   evt.preventDefault();
-  let card = [
+  const card = [
     {
       name: inputPlaceName.value,
       link: inputPlaceUrl.value,
@@ -119,7 +130,6 @@ editButton.addEventListener(`click`, editProfileClickHandler);
 addButton.addEventListener(`click`, addButtonClickHandler);
 formEditProfile.addEventListener(`submit`, formEditProfileSubmitHandler);
 formAddPlace.addEventListener(`submit`, formAddPlaceSubmitHandler);
-
 
 
 /* === добавление карточек в список === */
@@ -195,9 +205,8 @@ function createCard(data, index) {
  * @return {void}
  */
 function renderCards(data) {
-  let quantity = data.length;
+  const quantity = data.length;
 
-  let placesList = document.querySelector('.places__list');
 
   if (placesList) {
     for (let i = 0; i < quantity; i++) {
@@ -216,10 +225,9 @@ function renderCards(data) {
 function showFullImage(cardTitle, evt) {
   openPopup(popupFullimage);
 
-  const fullImage = popupFullimage.querySelector('.popup__full-image');
+
   fullImage.src = evt.target.src;
   fullImage.alt = `Фотография загруженная пользователем: ${cardTitle}`;
 
-  const figcaption = popupFullimage.querySelector('.popup__figcaption');
   figcaption.textContent = cardTitle;
 }
