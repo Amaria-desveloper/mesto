@@ -267,9 +267,9 @@ closeButtonPopupEdit.addEventListener('click', closePopup.bind(this, popupEdit))
 closeButtonPopupAdd.addEventListener('click', closePopup.bind(this, popupAdd));
 closeButtonPopupFullimage.addEventListener('click', closePopup.bind(this, popupFullimage));
 
-popupEdit.addEventListener('click', popupOverlayClickHandler);
-popupAdd.addEventListener('click', popupOverlayClickHandler);
-popupFullimage.addEventListener('click', popupOverlayClickHandler);
+popupEdit.addEventListener('mousedown', popupOverlayClickHandler);
+popupAdd.addEventListener('mousedown', popupOverlayClickHandler);
+popupFullimage.addEventListener('mousedown', popupOverlayClickHandler);
 
 
 /* настройки для валидации всех форм */
