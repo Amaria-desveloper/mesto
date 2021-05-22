@@ -17,6 +17,13 @@
   opacity: 0.8;
 }
 
+.button_type_save:disabled {
+  border-color: rgba(0, 0, 0, 0.2);
+  background-color: transparent;
+  color: rgba(0, 0, 0, 0.2);
+}
+
+
 @media screen and (max-width: 768px) {
   .button_type_save {
     height: 46px;

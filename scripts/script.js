@@ -9,6 +9,7 @@ const placesList = document.querySelector('.places__list');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
+
 //попап с формой редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
 const formEditProfile = popupEdit.querySelector('.popup__form[name="editProfile"]');
@@ -247,3 +248,14 @@ formAddPlace.addEventListener('submit', formAddPlaceSubmitHandler);
 closeButtonPopupEdit.addEventListener('click', closePopup.bind(this, popupEdit));
 closeButtonPopupAdd.addEventListener('click', closePopup.bind(this, popupAdd));
 closeButtonPopupFullimage.addEventListener('click', closePopup.bind(this, popupFullimage));
+
+
+/* настройки для валидации всех форм */
+const config = {
+  errorActiveClass: 'popup__input-error_active',
+  inputSelector: '.popup__input',
+  submitSelector: '.popup__submit',
+  formSelector: '.popup__form'
+}
+
+enableValidation(config);

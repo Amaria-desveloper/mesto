@@ -1,9 +1,9 @@
 .popup__field {
+  position: relative;
   display: block;
   padding: 0;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
 
 .popup__field:not(:last-child) {
-  margin-bottom: 17px;
+  margin-bottom: 32px;
 }

@@ -37,21 +37,24 @@
     </footer>
   </div>
 
-  <!-- попап с формой рдактирования профиля -->
+  <!-- попап с формой редактирования профиля -->
   <div class="popup popup_type_edit popup_overlay_grey">
     <div class="popup__container">
 
-      <form class="popup__form" name="editProfile" action="#" method="post">
+      <form class="popup__form" name="editProfile" action="#" method="post" novalidate>
         <fieldset class="popup__fieldset">
           <legend class="popup__legend">
             <h2 class="popup__title">Редактировать профиль</h2>
           </legend>
 
           <label class="popup__field">
-            <input class="popup__input" type="text" name="profileName" value="Жак-Ив Кусто">
+            <input class="popup__input" id="profile-name" type="text" name="profileName" value="Жак-Ив Кусто" minlength="2" maxlength="40" required>
+            <span class="popup__input-error profile-name-error">Вы пропустили это поле</span>
           </label>
+
           <label class="popup__field">
-            <input class="popup__input" type="text" name="profileDescription" value="Исследователь">
+            <input class="popup__input" id="profile-description" type="text" name="profileDescription" value="Исследователь" minlength="2" maxlength="200" required>
+            <span class="popup__input-error profile-description-error">Вы пропустили это поле</span>
           </label>
         </fieldset>
         <button class="popup__submit button button_type_save" type="submit">Сохранить</button>
@@ -65,17 +68,20 @@
   <div class="popup popup_type_add popup_overlay_grey">
     <div class="popup__container">
 
-      <form class="popup__form" name="addPlace" action="#" method="post">
+      <form class="popup__form" name="addPlace" action="#" method="post" novalidate>
         <fieldset class="popup__fieldset">
           <legend class="popup__legend">
             <h2 class="popup__title">Новое место</h2>
           </legend>
 
           <label class="popup__field">
-            <input class="popup__input" type="text" name="placeName" value="" placeholder="Название" required>
+            <input class="popup__input" id="place-name" type="text" name="placeName" value="" placeholder="Название" minlength="2" maxlength="30" required>
+            <span class="popup__input-error place-name-error">Вы пропустили это поле</span>
           </label>
+
           <label class="popup__field">
-            <input class="popup__input" type="text" name="placeUrl" value="" placeholder="Ссылка на картинку" required>
+            <input class="popup__input" id="place-url" type="url" name="placeUrl" value="" placeholder="Ссылка на картинку" required>
+            <span class="popup__input-error place-url-error">Введите адрес сайта</span>
           </label>
         </fieldset>
         <button class="popup__submit button button_type_save" type="submit">Создать</button>
@@ -110,6 +116,7 @@
     </li>
   </template>
 
+  <script src="./scripts/validate.js"></script>
   <script src="./scripts/script.js"></script>
 </body>
 </html>
