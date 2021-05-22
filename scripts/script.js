@@ -9,6 +9,8 @@ const placesList = document.querySelector('.places__list');
 const editButton = document.querySelector('.profile__edit-button');
 const addButton = document.querySelector('.profile__add-button');
 
+//попап-оверлей
+const popupsOverlay = Array.from(document.querySelectorAll('.popup'));
 
 //попап с формой редактирования профиля
 const popupEdit = document.querySelector('.popup_type_edit');
@@ -62,13 +64,29 @@ const initialCards = [
 ];
 
 
-/* обработчки кнопки esc при открытом попапе*/
+/**
+ * обработчки кнопки esc при открытом попапе
+ * @param popup конкретный попап
+ * @param evt событие
+ */
 const popupEscHandler = (popup, evt) => {
   if (evt.key === 'Escape' || evt.key === 'Esc') {
     evt.preventDefault();
     closePopup(popup);
   }
 };
+
+
+/**
+ * Обработчик клика по оверлею попапа 
+ * @param evt событие
+ */
+function popupOverlayClickHandler(evt) {
+  const popup = document.querySelector('.popup_opened');
+  if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
+    closePopup(popup);
+  }
+}
 
 
 /**
@@ -249,6 +267,10 @@ closeButtonPopupEdit.addEventListener('click', closePopup.bind(this, popupEdit))
 closeButtonPopupAdd.addEventListener('click', closePopup.bind(this, popupAdd));
 closeButtonPopupFullimage.addEventListener('click', closePopup.bind(this, popupFullimage));
 
+popupEdit.addEventListener('click', popupOverlayClickHandler);
+popupAdd.addEventListener('click', popupOverlayClickHandler);
+popupFullimage.addEventListener('click', popupOverlayClickHandler);
+
 
 /* настройки для валидации всех форм */
 const config = {
@@ -258,4 +280,5 @@ const config = {
   formSelector: '.popup__form'
 }
 
+/* проверка на валидность */
 enableValidation(config);
