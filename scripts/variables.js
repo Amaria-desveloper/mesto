@@ -2,8 +2,8 @@
 
 //варианты кнопки escape
 const ESC_CODE = {
-  full: 'escape',
-  short: 'esc'
+  full: 'Escape',
+  short: 'Esc'
 };
 
 //искомые элементы на странице

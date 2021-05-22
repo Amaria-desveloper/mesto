@@ -6,10 +6,11 @@
  * @param popup конкретный попап
  * @param evt событие
  */
-function popupEscHandler(popup, evt) {
-  if (evt.key === 'Escape' || evt.key === 'Esc') {
+function popupEscHandler(evt) {
+  if (Object.values(ESC_CODE).includes(evt.key)) {
     evt.preventDefault();
-    closePopup(popup);
+    const popupOpened = document.querySelector('.popup_opened');
+    closePopup(popupOpened);
   }
 };
 
@@ -19,9 +20,9 @@ function popupEscHandler(popup, evt) {
  * @param evt событие
  */
 function popupOverlayClickHandler(evt) {
-  const popup = document.querySelector('.popup_opened');
+  const popupOpened = document.querySelector('.popup_opened');
   if (evt.target.classList.contains('popup') || evt.target.classList.contains('popup__button-close')) {
-    closePopup(popup);
+    closePopup(popupOpened);
   }
 }
 
@@ -32,7 +33,7 @@ function popupOverlayClickHandler(evt) {
  */
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', popupEscHandler.bind(this, popup));
+  document.addEventListener('keyup', popupEscHandler);
 }
 
 
@@ -42,7 +43,7 @@ function openPopup(popup) {
  */
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', popupEscHandler.bind(this, popup));
+  document.removeEventListener('keyup', popupEscHandler);
 }
 
 
