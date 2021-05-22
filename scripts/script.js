@@ -1,75 +1,12 @@
-`use strict`;
-
-//искомые элементы на странице
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
-const placesList = document.querySelector('.places__list');
-
-//кнопки
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
-
-//попап-оверлей
-const popupsOverlay = Array.from(document.querySelectorAll('.popup'));
-
-//попап с формой редактирования профиля
-const popupEdit = document.querySelector('.popup_type_edit');
-const formEditProfile = popupEdit.querySelector('.popup__form[name="editProfile"]');
-const inputProfileName = formEditProfile.querySelector('.popup__input[name="profileName"]');
-const inputProfileDesc = formEditProfile.querySelector('.popup__input[name="profileDescription"]');
-const closeButtonPopupEdit = popupEdit.querySelector('.popup__close-button');
-
-//попап с формой добавлений новой карточки
-const popupAdd = document.querySelector('.popup_type_add');
-const formAddPlace = popupAdd.querySelector('.popup__form[name="addPlace"]');
-const inputPlaceName = formAddPlace.querySelector('.popup__input[name="placeName"]');
-const inputPlaceUrl = formAddPlace.querySelector('.popup__input[name="placeUrl"]');
-const closeButtonPopupAdd = popupAdd.querySelector('.popup__close-button');
-
-
-//попап с full-image
-const popupFullimage = document.querySelector('.popup_type_fullimage');
-const fullImage = popupFullimage.querySelector('.popup__full-image');
-const figcaption = popupFullimage.querySelector('.popup__figcaption');
-const closeButtonPopupFullimage = popupFullimage.querySelector('.popup__close-button');
-
+'use strict';
 
 /* === добавление карточек в список === */
-//данные для карточек
-const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-  }
-];
-
-
 /**
  * обработчки кнопки esc при открытом попапе
  * @param popup конкретный попап
  * @param evt событие
  */
-const popupEscHandler = (popup, evt) => {
+function popupEscHandler(popup, evt) {
   if (evt.key === 'Escape' || evt.key === 'Esc') {
     evt.preventDefault();
     closePopup(popup);
@@ -187,9 +124,6 @@ function formAddPlaceSubmitHandler(evt) {
 }
 
 
-
-
-
 /**
  * Создаёт карточку Place с переданными данными
  * @param {object} card данные для карточки
@@ -256,6 +190,8 @@ function showFullImage(cardTitle, evt) {
 /* показывает изначальные карточки */
 renderCards(initialCards);
 
+/* проверка на валидность */
+enableValidation(config);
 
 /* события */
 editButton.addEventListener('click', editProfileClickHandler);
@@ -270,15 +206,3 @@ closeButtonPopupFullimage.addEventListener('click', closePopup.bind(this, popupF
 popupEdit.addEventListener('mousedown', popupOverlayClickHandler);
 popupAdd.addEventListener('mousedown', popupOverlayClickHandler);
 popupFullimage.addEventListener('mousedown', popupOverlayClickHandler);
-
-
-/* настройки для валидации всех форм */
-const config = {
-  errorActiveClass: 'popup__input-error_active',
-  inputSelector: '.popup__input',
-  submitSelector: '.popup__submit',
-  formSelector: '.popup__form'
-}
-
-/* проверка на валидность */
-enableValidation(config);
