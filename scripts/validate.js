@@ -8,7 +8,6 @@
  */
 function showInputError(formElement, inputElement, config) {
   const errorElement = formElement.querySelector(`.${inputElement.id}-error`);
-  console.log(errorElement);
   errorElement.textContent = inputElement.validationMessage;
   errorElement.classList.add(config.errorActiveClass);
 }
