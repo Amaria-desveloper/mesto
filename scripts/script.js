@@ -122,6 +122,7 @@ function formAddPlaceSubmitHandler(evt) {
 
   renderCards(card);
   closePopup(popupAdd);
+  popupAdd.querySelector('.popup__submit').disabled = true;
 }
 
 
