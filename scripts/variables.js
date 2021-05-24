@@ -59,6 +59,12 @@ const config = {
   formSelector: '.popup__form'
 }
 
+/* селекторы шаблона карточки Place*/
+const place = {
+  template: '#place-template',
+  block: '.place'
+}
+
 export { 
   ESC_CODE, 
   placesList, 
@@ -67,5 +73,6 @@ export {
   popupEdit, 
   popupAdd, 
   popupFullimage,
-  config 
+  config,
+  place
 }

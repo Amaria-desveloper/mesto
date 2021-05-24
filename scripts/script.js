@@ -1,8 +1,9 @@
 'use strict';
 
 import initialCards from './data.js';
-import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config } from './variables.js';
+import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config, place } from './variables.js';
 import enableValidation from './validate.js';
+import Card from './Card.js';
 
 /* === добавление карточек в список === */
 /**
@@ -131,41 +132,6 @@ function formAddPlaceSubmitHandler(evt) {
 
 
 /**
- * Создаёт карточку Place с переданными данными
- * @param {object} card данные для карточки
- * @param {int} index индекс элемента в массиве данных
- * @return {HTMLElement} card - возвращает #document-fragment.
- */
-function createCard(card) {
-  const template = document.querySelector('#place-template').content;
-  const element = template.querySelector('.place').cloneNode(true);
-
-  const image = element.querySelector('.place__image');
-  const title = element.querySelector('.place__title');
-
-  image.src = card.link;
-  image.alt = `Фотография загруженная пользователем: ${card.name}`;
-  title.textContent = card.name;
-
-  const likeButton = element.querySelector('.place__button');
-  likeButton.addEventListener('click', evt => {
-    evt.preventDefault();
-    likeButton.classList.toggle('button_type_heart_active');
-  });
-
-  const deleteButton = element.querySelector('.place__delete');
-  deleteButton.addEventListener('click', evt => {
-    evt.preventDefault();
-    element.remove();
-  });
-
-  image.addEventListener('click', showFullImage.bind(this, title.textContent));
-
-  return element;
-}
-
-
-/**
  * Добавляет карточки в DOM-дерево
  * @param {array.<object>} data данные для карточки
  * @param {int} quantity число карточек, которое требуется добавить
@@ -173,7 +139,11 @@ function createCard(card) {
  */
 function renderCards(data) {
   if (placesList) {
-    data.forEach((card) => placesList.prepend(createCard(card)));
+    data.forEach((datum) => {
+      const card = new Card(datum, place, _cardClickHandler);
+      const cardElement = card.create(); 
+      placesList.prepend(cardElement);
+    });
   }
 }
 
@@ -184,7 +154,9 @@ function renderCards(data) {
  * @param cardTitle название фото
  * @param evt событие
  */
-function showFullImage(cardTitle, evt) {
+function _cardClickHandler(cardTitle, evt) {
+console.log(cardTitle);
+
   openPopup(popupFullimage.name);
 
   popupFullimage.image.src = evt.target.src;
