@@ -2,7 +2,7 @@
 
 import initialCards from './util/data.js';
 import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config, place } from './util/variables.js';
-import enableValidation from './validate.js';
+import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
 /* === добавление карточек в список === */
@@ -167,7 +167,8 @@ function _cardClickHandler(cardTitle, evt) {
 renderCards(initialCards);
 
 /* проверка на валидность */
-enableValidation(config);
+const validationFormEdit = new FormValidator(config, popupEdit.form);
+validationFormEdit.enableValidation();
 
 /* события */
 button.edit.addEventListener('click', editProfileClickHandler);

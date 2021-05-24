@@ -30,7 +30,6 @@ export default class Card {
     this._element.querySelector('.place__button').classList.toggle('button_type_heart_active');
   }
 
-
   /**
    * Удаляет карточку 
    */
