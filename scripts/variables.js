@@ -7,37 +7,48 @@ const ESC_CODE = {
 };
 
 //искомые элементы на странице
-const profileName = document.querySelector('.profile__name');
-const profileDescription = document.querySelector('.profile__description');
 const placesList = document.querySelector('.places__list');
 
-//кнопки
-const editButton = document.querySelector('.profile__edit-button');
-const addButton = document.querySelector('.profile__add-button');
+//интерактивные элементы профиля
+const profile = {
+  name: document.querySelector('.profile__name'),
+  description: document.querySelector('.profile__description')
+};
 
-//попап-оверлей
-const popupsOverlay = Array.from(document.querySelectorAll('.popup'));
+//кнопки
+const button = {
+  edit: document.querySelector('.profile__edit-button'),
+  add: document.querySelector('.profile__add-button')
+};
 
 //попап с формой редактирования профиля
-const popupEdit = document.querySelector('.popup_type_edit');
-const formEditProfile = popupEdit.querySelector('.popup__form[name="editProfile"]');
-const inputProfileName = formEditProfile.querySelector('.popup__input[name="profileName"]');
-const inputProfileDesc = formEditProfile.querySelector('.popup__input[name="profileDescription"]');
-const closeButtonPopupEdit = popupEdit.querySelector('.popup__close-button');
+const popupEdit = {
+  name: document.querySelector('.popup_type_edit'),
+};
+popupEdit.form = popupEdit.name.querySelector('.popup__form[name="editProfile"]');
+popupEdit.inputProfileName = popupEdit.form.querySelector('.popup__input[name="profileName"]');
+popupEdit.inputProfileDesc = popupEdit.form.querySelector('.popup__input[name="profileDescription"]');
+popupEdit.closeButton = popupEdit.name.querySelector('.popup__close-button');
+
 
 //попап с формой добавлений новой карточки
-const popupAdd = document.querySelector('.popup_type_add');
-const formAddPlace = popupAdd.querySelector('.popup__form[name="addPlace"]');
-const inputPlaceName = formAddPlace.querySelector('.popup__input[name="placeName"]');
-const inputPlaceUrl = formAddPlace.querySelector('.popup__input[name="placeUrl"]');
-const closeButtonPopupAdd = popupAdd.querySelector('.popup__close-button');
+const popupAdd = {
+  name: document.querySelector('.popup_type_add')
+};
+popupAdd.form = popupAdd.name.querySelector('.popup__form[name="addPlace"]');
+popupAdd.inputPlaceName = popupAdd.form.querySelector('.popup__input[name="placeName"]');
+popupAdd.inputPlaceUrl = popupAdd.form.querySelector('.popup__input[name="placeUrl"]');
+popupAdd.closeButton = popupAdd.name.querySelector('.popup__close-button');
+popupAdd.submitButton = popupAdd.name.querySelector('.popup__submit');
 
 
 //попап с full-image
-const popupFullimage = document.querySelector('.popup_type_fullimage');
-const fullImage = popupFullimage.querySelector('.popup__full-image');
-const figcaption = popupFullimage.querySelector('.popup__figcaption');
-const closeButtonPopupFullimage = popupFullimage.querySelector('.popup__close-button');
+const popupFullimage = {
+  name: document.querySelector('.popup_type_fullimage')
+};
+popupFullimage.image = popupFullimage.name.querySelector('.popup__full-image');
+popupFullimage.figcaption = popupFullimage.name.querySelector('.popup__figcaption');
+popupFullimage.closeButton = popupFullimage.name.querySelector('.popup__close-button');
 
 
 /* настройки для валидации всех форм */
@@ -46,4 +57,15 @@ const config = {
   inputSelector: '.popup__input',
   submitSelector: '.popup__submit',
   formSelector: '.popup__form'
+}
+
+export { 
+  ESC_CODE, 
+  placesList, 
+  profile, 
+  button, 
+  popupEdit, 
+  popupAdd, 
+  popupFullimage,
+  config 
 }

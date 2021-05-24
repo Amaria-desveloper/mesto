@@ -1,5 +1,9 @@
 'use strict';
 
+import initialCards from './data.js';
+import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config } from './variables.js';
+import enableValidation from './validate.js';
+
 /* === добавление карточек в список === */
 /**
  * обработчки кнопки esc при открытом попапе
@@ -51,8 +55,8 @@ function closePopup(popup) {
  * Записывет в форму редактирования текущие значения имени и описания профиля
  */
 function getProfileData() {
-  inputProfileName.value = profileName.textContent;
-  inputProfileDesc.value = profileDescription.textContent;
+  popupEdit.inputProfileName.value = profile.name.textContent;
+  popupEdit.inputProfileDesc.value = profile.description.textContent;
 }
 
 
@@ -60,8 +64,8 @@ function getProfileData() {
  * Меняет значения полей профиля на значения, полученные из формы редактирования
  */
 function changeProfileData() {
-  profileName.textContent = inputProfileName.value;
-  profileDescription.textContent = inputProfileDesc.value;
+  profile.name.textContent = popupEdit.inputProfileName.value;
+  profile.description.textContent = popupEdit.inputProfileDesc.value;
 }
 
 
@@ -80,7 +84,7 @@ function resetAllInputs(form) {
  */
 function editProfileClickHandler(evt) {
   evt.preventDefault();
-  openPopup(popupEdit);
+  openPopup(popupEdit.name);
   getProfileData();
 }
 
@@ -92,7 +96,7 @@ function editProfileClickHandler(evt) {
 function formEditProfileSubmitHandler(evt) {
   evt.preventDefault();
   changeProfileData();
-  closePopup(popupEdit);
+  closePopup(popupEdit.name);
 }
 
 
@@ -102,8 +106,8 @@ function formEditProfileSubmitHandler(evt) {
  */
 function addButtonClickHandler(evt) {
   evt.preventDefault();
-  resetAllInputs(formAddPlace);
-  openPopup(popupAdd);
+  resetAllInputs(popupAdd.form);
+  openPopup(popupAdd.name);
 }
 
 
@@ -115,14 +119,14 @@ function formAddPlaceSubmitHandler(evt) {
   evt.preventDefault();
   const card = [
     {
-      name: inputPlaceName.value,
-      link: inputPlaceUrl.value,
+      name: popupAdd.inputPlaceName.value,
+      link: popupAdd.inputPlaceUrl.value,
     }
   ];
 
   renderCards(card);
-  closePopup(popupAdd);
-  popupAdd.querySelector('.popup__submit').disabled = true;
+  closePopup(popupAdd.name);
+  popupAdd.submitButton.disabled = true;
 }
 
 
@@ -181,12 +185,12 @@ function renderCards(data) {
  * @param evt событие
  */
 function showFullImage(cardTitle, evt) {
-  openPopup(popupFullimage);
+  openPopup(popupFullimage.name);
 
-  fullImage.src = evt.target.src;
-  fullImage.alt = `Фотография загруженная пользователем: ${cardTitle}`;
+  popupFullimage.image.src = evt.target.src;
+  popupFullimage.image.alt = `Фотография загруженная пользователем: ${cardTitle}`;
 
-  figcaption.textContent = cardTitle;
+  popupFullimage.figcaption.textContent = cardTitle;
 }
 
 /* показывает изначальные карточки */
@@ -196,15 +200,15 @@ renderCards(initialCards);
 enableValidation(config);
 
 /* события */
-editButton.addEventListener('click', editProfileClickHandler);
-addButton.addEventListener('click', addButtonClickHandler);
-formEditProfile.addEventListener('submit', formEditProfileSubmitHandler);
-formAddPlace.addEventListener('submit', formAddPlaceSubmitHandler);
+button.edit.addEventListener('click', editProfileClickHandler);
+button.add.addEventListener('click', addButtonClickHandler);
+popupEdit.form.addEventListener('submit', formEditProfileSubmitHandler);
+popupAdd.form.addEventListener('submit', formAddPlaceSubmitHandler);
 
-closeButtonPopupEdit.addEventListener('click', closePopup.bind(this, popupEdit));
-closeButtonPopupAdd.addEventListener('click', closePopup.bind(this, popupAdd));
-closeButtonPopupFullimage.addEventListener('click', closePopup.bind(this, popupFullimage));
+popupEdit.closeButton.addEventListener('click', closePopup.bind(this, popupEdit.name));
+popupAdd.closeButton.addEventListener('click', closePopup.bind(this, popupAdd.name));
+popupFullimage.closeButton.addEventListener('click', closePopup.bind(this, popupFullimage.name));
 
-popupEdit.addEventListener('mousedown', popupOverlayClickHandler);
-popupAdd.addEventListener('mousedown', popupOverlayClickHandler);
-popupFullimage.addEventListener('mousedown', popupOverlayClickHandler);
+popupEdit.name.addEventListener('mousedown', popupOverlayClickHandler);
+popupAdd.name.addEventListener('mousedown', popupOverlayClickHandler);
+popupFullimage.name.addEventListener('mousedown', popupOverlayClickHandler);

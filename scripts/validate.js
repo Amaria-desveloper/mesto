@@ -1,5 +1,7 @@
 'use strict';
 
+import { config } from './variables.js';
+
 /**
  * Показывает блок с ошибкой
  * @param formElement конкретная форма
@@ -89,3 +91,5 @@ function enableValidation(config) {
     setEventListeners(formElement, config);
   })
 }
+
+export default enableValidation;
