@@ -1,6 +1,6 @@
 'use strict';
 
-import { config } from './variables.js';
+import { config } from './util/variables.js';
 
 /**
  * Показывает блок с ошибкой

@@ -1,7 +1,7 @@
 'use strict';
 
-import initialCards from './data.js';
-import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config, place } from './variables.js';
+import initialCards from './util/data.js';
+import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullimage, config, place } from './util/variables.js';
 import enableValidation from './validate.js';
 import Card from './Card.js';
 
@@ -155,8 +155,6 @@ function renderCards(data) {
  * @param evt событие
  */
 function _cardClickHandler(cardTitle, evt) {
-console.log(cardTitle);
-
   openPopup(popupFullimage.name);
 
   popupFullimage.image.src = evt.target.src;
