@@ -97,6 +97,8 @@ function resetAllInputs(form) {
 
 /**
  * Сбрасывает ошибки формы
+ * @param popup конкретный попап
+ * @param errorSelector селектор элемента/ов с ошибкой
  */
 function resetAllErrors(popup, errorSelector) {
   const errors = Array.from(popup.querySelectorAll(`.${errorSelector}`));
