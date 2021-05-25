@@ -48,6 +48,7 @@ function openPopup(popup) {
  */
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  resetAllErrors(popup, config.errorActiveClass);
   document.removeEventListener('keyup', popupEscHandler);
 }
 
@@ -91,6 +92,19 @@ function changeProfileData() {
  */
 function resetAllInputs(form) {
   form.reset();
+}
+
+
+/**
+ * Сбрасывает ошибки формы
+ * @param popup конкретный попап
+ * @param errorSelector селектор элемента/ов с ошибкой
+ */
+function resetAllErrors(popup, errorSelector) {
+  const errors = Array.from(popup.querySelectorAll(`.${errorSelector}`));
+  if (errors) {
+    errors.forEach(error => error.classList.remove(config.errorActiveClass));
+  }
 }
 
 
