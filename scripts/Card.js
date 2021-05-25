@@ -50,9 +50,22 @@ export default class Card {
      this._remove();
     });
 
-    this._element.querySelector('.place__image').addEventListener('click', (evt) => {
-      this._cardClickHandler(this._name, evt);
+    this._element.querySelector('.place__image').addEventListener('click', () => {
+      this._cardClickHandler(this._name, this._link);
     });
+  }
+
+  
+  /**
+   * Находит шаблон для карточки
+   */
+  _getTemplate() {
+    const template = document.querySelector(this._templateSelector.template)
+      .content
+      .querySelector(this._templateSelector.block)
+      .cloneNode(true);
+      
+    return template;
   }
 
   /**
@@ -60,11 +73,7 @@ export default class Card {
    * @returns this._element подготовленную разметку одной карточки
    */
   create() {
-    this._element = document.querySelector(this._templateSelector.template)
-      .content
-      .querySelector(this._templateSelector.block)
-      .cloneNode(true);
-
+    this._element = this._getTemplate();
     this._setData();
     this._setEventListeners();
 
