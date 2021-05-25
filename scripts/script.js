@@ -5,7 +5,7 @@ import { ESC_CODE, placesList, profile, button, popupEdit, popupAdd, popupFullim
 import FormValidator from './FormValidator.js';
 import Card from './Card.js';
 
-/* === добавление карточек в список === */
+/* === попапы === */
 /**
  * обработчки кнопки esc при открытом попапе
  * @param popup конкретный попап
@@ -17,7 +17,7 @@ function popupEscHandler(evt) {
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
-};
+}
 
 
 /**
@@ -52,6 +52,21 @@ function closePopup(popup) {
 }
 
 
+/**
+ * Показать попап с изображением с карточки места
+ * @param cardTitle название фото
+ * @param evt событие
+ */
+function _cardClickHandler(cardTitle, evt) {
+  openPopup(popupFullimage.name);
+
+  popupFullimage.image.src = evt.target.src;
+  popupFullimage.image.alt = `Фотография загруженная пользователем: ${cardTitle}`;
+
+  popupFullimage.figcaption.textContent = cardTitle;
+}
+
+/* === действия с формой ===*/
 /**
  * Записывет в форму редактирования текущие значения имени и описания профиля
  */
@@ -141,34 +156,24 @@ function renderCards(data) {
   if (placesList) {
     data.forEach((datum) => {
       const card = new Card(datum, place, _cardClickHandler);
-      const cardElement = card.create(); 
+      const cardElement = card.create();
       placesList.prepend(cardElement);
     });
   }
 }
 
 
-/* === манипуляции с карточками ===*/
-/**
- * Показать попап с изображением с карточки места
- * @param cardTitle название фото
- * @param evt событие
- */
-function _cardClickHandler(cardTitle, evt) {
-  openPopup(popupFullimage.name);
-
-  popupFullimage.image.src = evt.target.src;
-  popupFullimage.image.alt = `Фотография загруженная пользователем: ${cardTitle}`;
-
-  popupFullimage.figcaption.textContent = cardTitle;
-}
-
 /* показывает изначальные карточки */
 renderCards(initialCards);
 
 /* проверка на валидность */
+//формы профиля
 const validationFormEdit = new FormValidator(config, popupEdit.form);
 validationFormEdit.enableValidation();
+
+//формы добавления карточки
+const validationFormAdd = new FormValidator(config, popupAdd.form);
+validationFormAdd.enableValidation();
 
 /* события */
 button.edit.addEventListener('click', editProfileClickHandler);
@@ -176,9 +181,15 @@ button.add.addEventListener('click', addButtonClickHandler);
 popupEdit.form.addEventListener('submit', formEditProfileSubmitHandler);
 popupAdd.form.addEventListener('submit', formAddPlaceSubmitHandler);
 
-popupEdit.closeButton.addEventListener('click', closePopup.bind(this, popupEdit.name));
-popupAdd.closeButton.addEventListener('click', closePopup.bind(this, popupAdd.name));
-popupFullimage.closeButton.addEventListener('click', closePopup.bind(this, popupFullimage.name));
+popupEdit.closeButton.addEventListener('click', () => {
+  closePopup(popupEdit.name);
+});
+popupAdd.closeButton.addEventListener('click', () => {
+  closePopup(popupAdd.name);
+});
+popupFullimage.closeButton.addEventListener('click', () => {
+  closePopup(popupFullimage.name);
+});
 
 popupEdit.name.addEventListener('mousedown', popupOverlayClickHandler);
 popupAdd.name.addEventListener('mousedown', popupOverlayClickHandler);

@@ -57,13 +57,13 @@ const config = {
   inputSelector: '.popup__input',
   submitSelector: '.popup__submit',
   formSelector: '.popup__form'
-}
+};
 
 /* селекторы шаблона карточки Place*/
 const place = {
   template: '#place-template',
   block: '.place'
-}
+};
 
 export { 
   ESC_CODE, 
@@ -75,4 +75,4 @@ export {
   popupFullimage,
   config,
   place
-}
+};

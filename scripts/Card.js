@@ -2,7 +2,8 @@
 /**
  * Создаёт карточку Place из заданного шаблона с переданными данными
  * @param data данные для карточки
- * @param templateSelector имя класса шаблона разметки
+ * @param templateSelector селектор шаблона
+ * @param _cardClickHandler отлов клика по карточке
  */
 export default class Card {
   constructor(data, templateSelector, _cardClickHandler) {
@@ -69,4 +70,4 @@ export default class Card {
 
     return this._element;
   }
-};
+}
