@@ -13,7 +13,6 @@ import Card from './Card.js';
  */
 function popupEscHandler(evt) {
   if (Object.values(ESC_CODE).includes(evt.key)) {
-    evt.preventDefault();
     const popupOpened = document.querySelector('.popup_opened');
     closePopup(popupOpened);
   }
@@ -58,10 +57,10 @@ function closePopup(popup) {
  * @param cardTitle название фото
  * @param evt событие
  */
-function _cardClickHandler(cardTitle, evt) {
+function _cardClickHandler(cardTitle, cardLink) {
   openPopup(popupFullimage.name);
 
-  popupFullimage.image.src = evt.target.src;
+  popupFullimage.image.src = cardLink;
   popupFullimage.image.alt = `Фотография загруженная пользователем: ${cardTitle}`;
 
   popupFullimage.figcaption.textContent = cardTitle;
@@ -113,7 +112,6 @@ function resetAllErrors(popup, errorSelector) {
  * @param evt click
  */
 function editProfileClickHandler(evt) {
-  evt.preventDefault();
   openPopup(popupEdit.name);
   getProfileData();
 }
@@ -134,8 +132,7 @@ function formEditProfileSubmitHandler(evt) {
  * Обработчик клика на кнопке добавления новой карточки
  * @param evt
  */
-function addButtonClickHandler(evt) {
-  evt.preventDefault();
+function addButtonClickHandler() {
   resetAllInputs(popupAdd.form);
   openPopup(popupAdd.name);
 }
@@ -167,13 +164,11 @@ function formAddPlaceSubmitHandler(evt) {
  * @return {void}
  */
 function renderCards(data) {
-  if (placesList) {
-    data.forEach((datum) => {
-      const card = new Card(datum, place, _cardClickHandler);
-      const cardElement = card.create();
-      placesList.prepend(cardElement);
-    });
-  }
+  data.forEach((datum) => {
+    const card = new Card(datum, place, _cardClickHandler);
+    const cardElement = card.create();
+    placesList.prepend(cardElement);
+  });
 }
 
 
